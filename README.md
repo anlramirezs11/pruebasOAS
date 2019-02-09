@@ -9,6 +9,7 @@ docker-compose up
 
 # En caso de no tener instalado docker seguir las guías de instlación en
 https://docs.docker.com/install/
+
 https://docs.docker.com/compose/install/
 
 
