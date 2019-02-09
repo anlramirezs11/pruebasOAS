@@ -7,7 +7,7 @@ Ubicado en la raíz del proyecto ejecutar la siguiente linea:
 
 docker-compose up
 
-# En caso de no tener instalado docker seguir las guìas de instlación en
+# En caso de no tener instalado docker seguir las guías de instlación en
 https://docs.docker.com/install/
 https://docs.docker.com/compose/install/
 
