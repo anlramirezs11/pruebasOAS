@@ -1,0 +1,28 @@
+version: "3"
+
+services:
+
+  app:
+    build: frontend
+    command: "npm start"
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/usr/app
+      - /usr/app/node_modules
+
+  server:
+    build: server
+    command: "npm run dev"
+    environment:
+      MONGO_URL: "mongodb://db:27017/actividades"
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./server:/usr/src
+      - /usr/src/node_modules
+
+  db:
+    image: mongo

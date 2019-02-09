@@ -1,0 +1,55 @@
+<div class="container">
+    <div class="row">      
+      <div class="col s7">
+        <table>
+          <thead>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Telefono</th>
+            <th>Options</th>
+          </thead>
+          <tbody>
+              <tr *ngFor="let responsable of responsableService.responsables"> 
+                  <td>{{responsable.nombre}}</td>
+                  <td>{{responsable.correo }}</td>
+                  <td>{{responsable.telefono}}</td>
+                  <td>
+                    <a (click)="editResponsable(responsable)"><i class="material-icons">edit</i></a>
+                    <a (click)="deleteResponsable(responsable)"><i class="material-icons">delete</i></a>
+                  </td>    
+  
+          </tbody>
+        </table>  
+      </div>
+      <div class="col s5">
+          <div class="card">
+            <div class="card-content">
+                <form #responsableForm="ngForm" (ngSubmit)="addResponsable(responsableForm)">
+                    <input type="hidden" name="_id" #_id="ngModel"
+                    [(ngModel)]="responsableService.selectedResponsable._id">
+                  <div class="row">                          
+                    <div class="input-field col s12">
+                      <input type="text" name="nombre" #descripcion="ngModel" 
+                        [(ngModel)]="responsableService.selectedResponsable.nombre" 
+                        placeholder="Ingrese el nombre del responsable.">
+                      <input type="text" name="correo" #correo="ngModel" 
+                        [(ngModel)]="responsableService.selectedResponsable.correo" 
+                        placeholder="Ingrese el correo del responsable">
+                      <input type="text" name="telefono" #f_limite="ngModel" 
+                        [(ngModel)]="responsableService.selectedResponsable.telefono" 
+                        placeholder="Ingrese el telefono del responsable">
+                    </div>
+                    <div class="card-action">
+                       <div class="input-field col s12">
+                         <button class="btn" >Guardar</button>
+                         <button class="btn right" (click)="resetForm(responsableForm)" >Limpiar</button>
+                       </div>
+                    </div>
+                  </div>        
+                </form>
+            </div>
+          </div>
+    
+        </div>
+    </div>
+  </div>

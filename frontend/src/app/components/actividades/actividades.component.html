@@ -1,0 +1,73 @@
+<div class="container">
+  <div class="row">
+    <div class="col s5">
+      <div class="card">
+        <div class="card-content">
+          <form #actividadForm="ngForm" (ngSubmit)="addActividad(actividadForm)">
+            <input type="hidden" name="_id" #_id="ngModel"
+            [(ngModel)]="actividadService.selectedActividad._id">
+            <div class="row">                          
+            <div class="input-field col s12">
+              <input type="text" name="descripcion" #descripcion="ngModel" 
+                [(ngModel)]="actividadService.selectedActividad.descripcion" 
+                placeholder="Ingrese la descripción de la actividad">
+              <input type="text" name="f_registro" #f_registro="ngModel" 
+                [(ngModel)]="actividadService.selectedActividad.f_registro" 
+                placeholder="Ingrese la fecha limite">
+              <input type="text" name="f_limite" #f_limite="ngModel" 
+                [(ngModel)]="actividadService.selectedActividad.f_limite" 
+                placeholder="Ingrese la fecha limite">
+              <input type="text" name="responsable" #responsable="ngModel" 
+                [(ngModel)]="actividadService.selectedActividad.responsable" 
+                placeholder="Ingrese el nombre del responsable">
+                            
+              <input type="text" name="soporte" #soporte="ngModel" 
+                [(ngModel)]="actividadService.selectedActividad.soporte" 
+                placeholder="Ingrese el link del soporte">
+              <input type="text" name="estado" #estado="ngModel" 
+                [(ngModel)]="actividadService.selectedActividad.estado" 
+                placeholder="Ingrese el estado">
+            </div>
+            <div class="card-action">
+               <div class="input-field col s12">
+                 <button class="btn" >Guardar</button>
+                 <button class="btn right" (click)="resetForm(actividadForm)" >Limpiar</button>
+               </div>
+            </div>
+          </div>
+
+          </form>
+
+        </div>
+      </div>
+
+    </div>
+    <div class="col s7">
+      <table>
+        <thead>
+          <th>descripción</th>
+          <th>Fecha de Resgistro</th>
+          <th>Fecha de Limite</th>
+          <th>Responsable</th>
+          <th>Soporte</th>
+          <th>Estado</th>
+        </thead>
+        <tbody>
+          <tr *ngFor="let actividad of actividadService.actividades"> 
+              <td>{{actividad.descripcion}}</td>
+              <td>{{actividad.f_registro}}</td>
+              <td>{{actividad.f_limite}}</td>
+              <td>{{actividad.responsable}}</td>
+              <td>{{actividad.soporte}}</td>
+              <td>{{actividad.estado}}</td>
+              <td>
+                <a (click)="editActividad(actividad)"><i class="material-icons">edit</i></a>
+                <a (click)="deleteActividad(actividad)"><i class="material-icons">delete</i></a>
+              </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>
